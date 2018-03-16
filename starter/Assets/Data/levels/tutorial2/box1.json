@@ -18,7 +18,7 @@
   "solRotY":"12",
   "solRotZ":"30",
 
-  "isRotatable": false,
-  "isMovable": true
+  "isRotatable": true,
+  "isMovable": false
 
 }
