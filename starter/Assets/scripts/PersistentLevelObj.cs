@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class PersistentLevelObj : MonoBehaviour {
 
-	public LevelData data;
+  public LevelData data;
+  private static PersistentLevelObj selfInstance;
 
-	void Awake() {
-		DontDestroyOnLoad(this);
-	}
+  void Awake() {
+    DontDestroyOnLoad(this);
 
-	// Update is called once per frame
-	void Update () {
+    if (selfInstance == null) {
+        selfInstance = this;
+    } else {
+        DestroyObject(gameObject);
+    }
+  }
 
-	}
-}
+  // Update is called once per frame
+  void Update () {
+
+  }
+} 

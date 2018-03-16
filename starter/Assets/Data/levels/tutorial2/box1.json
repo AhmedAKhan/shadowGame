@@ -1,8 +1,8 @@
 {
-  "level":"tutorial1",
+  "level":"tutorial2",
   "name":"box1",
   "prefab":"Cube",
-  "x":-6.0,
+  "x":-2.0,
   "y":0,
   "z":-2.0,
 

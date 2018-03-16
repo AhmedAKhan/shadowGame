@@ -12,8 +12,7 @@ public class movement2 : MonoBehaviour {
   private int selectedChildIndex = 0;
   private Obstacle curObstacle;
 
-  public int currentLevel;
-  public int mainMenuIndex = 0;
+  public int levelMenuIndex = 1;
 
 
   //public Image target;
@@ -21,12 +20,13 @@ public class movement2 : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-    currentObject = transform.GetChild (0).gameObject;
-    curObstacle = currentObject.GetComponent<Obstacle> ();
 
     // update the tutorial image object
     //target.sprite = Resources.Load<Sprite>("sample2");
     setupLevel();
+
+    currentObject = transform.GetChild (0).gameObject;
+    curObstacle = currentObject.GetComponent<Obstacle> ();
   }
   private LevelData levelConfig;
   void setupLevel(){
@@ -78,7 +78,7 @@ public class movement2 : MonoBehaviour {
     Obstacle obstacle = go.GetComponent<Obstacle>();
     obstacle.isRotatable = o.isRotatable;
     obstacle.isMovable = o.isMovable;
-    obstacle.posSol = new Vector3(o.x, o.y, o.z);
+    obstacle.posSol = new Vector3(o.solX, o.solY, o.solZ);
     print("setting o.isRotatable: " + o.isRotatable + " o.isMovable: " + o.isMovable);
     print("setting o.x: " + o.x + " o.y: " + o.y + " o.z: " + o.z);
     obstacle.rotateSol = Quaternion.Euler(o.solRotX, o.solRotY, o.solRotZ);
@@ -93,9 +93,12 @@ public class movement2 : MonoBehaviour {
 
   // ----- win condition ----------
   void handleWin(){
-    Game.current = new Game (); // Will be initialized by main menu
-    Game.current.levelCompleted(currentLevel);
-    SceneManager.LoadScene(mainMenuIndex);// main menu has an id of 0
+    if(Game.current == null) Game.current = new Game();
+    Game.current.levelCompleted(levelConfig);
+    SaveLoad.savedGame = Game.current;
+    SaveLoad.Save();
+
+    SceneManager.LoadScene(levelMenuIndex);// main menu has an id of 0
   }
 
   bool checkWin(){
@@ -110,8 +113,8 @@ public class movement2 : MonoBehaviour {
 
   private float epsilon = 0.5f;
   bool obstaclePositionCorrect(Vector3 pos, Vector3 posSol){
-    /* print ("pos: " + pos); */
-    /* print ("diff: " + Vector3.SqrMagnitude (pos - posSol)); */
+    print ("pos: " + pos + " posSol: " + posSol);
+    print ("diff: " + Vector3.SqrMagnitude (pos - posSol));
     return Vector3.SqrMagnitude(pos - posSol) < epsilon;
   }
   bool obstacleRotationCorrect(Quaternion rot, Quaternion rotSol){

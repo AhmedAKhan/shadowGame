@@ -10,10 +10,11 @@ public class LevelData {
   public int parent;
 
   public string scene;
-  public int[] children;
+  public string[] nextLevels;
 
   public float objPosX;
   public float objPosY;
   public float objPosZ;
   public string objectiveMaterialName;
 }
+

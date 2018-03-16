@@ -10,7 +10,11 @@ public class LevelManager : MonoBehaviour {
   private string[] levelNames;
   private Dictionary<string, LevelData> levelMap;
   void Start () {
-    if(!SaveLoad.Load()){ // TEMP done in main menu
+    /* Game.current = new Game(); */
+    /* Game.current.setupEmpty(); */
+    /* SaveLoad.Save(); */
+
+    if(!SaveLoad.Load()){
       Game.current = new Game();
       Game.current.setupEmpty();
     }
@@ -21,7 +25,7 @@ public class LevelManager : MonoBehaviour {
     /* print("checking if path exists"); */
     if(File.Exists(path)){
       /* print("path exists"); */
-      string dataAsJson = File.ReadAllText("Assets/Data/levels.json");
+      string dataAsJson = File.ReadAllText(path);
       AllLevels loadedData = JsonUtility.FromJson<AllLevels>(dataAsJson);
       levelNames = loadedData.levels;
     }else{
@@ -66,6 +70,7 @@ public class LevelManager : MonoBehaviour {
   }
   void loadLevelInformation(){
     Level obj = selectedObject.GetComponent<Level> ();
+    if(levelMap.ContainsKey(obj.level)) return;
     Debug.Log("loadLevel - the level you clicked on is " + obj.level);
     string levelPath = "Assets/Data/"+obj.level+".json";
     if(File.Exists(levelPath)){
