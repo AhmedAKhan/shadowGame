@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 
-public class movement2 : MonoBehaviour {
+public class gameController: MonoBehaviour {
   public float speed;
   public float rotationSpeed;
   private GameObject currentObject;
