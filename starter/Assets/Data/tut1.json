@@ -1,0 +1,13 @@
+{
+  "name":"tutorial1",
+  "number":1,
+  "parent":null,
+
+  "objectiveMaterialName":"metalBox",
+  "objPosX":"-0.5",
+  "objPosY":"2.0",
+  "objPosZ":"0",
+
+  "scene":"level_1B",
+  "children":["tutorial2"]
+}

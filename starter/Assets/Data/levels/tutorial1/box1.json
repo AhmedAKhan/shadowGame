@@ -1,0 +1,23 @@
+{
+  "level":"tutorial1",
+  "name":"box1",
+  "prefab":"Cube",
+  "x":-6.0,
+  "y":0,
+  "z":-2.0,
+
+  "solX":"2.0",
+  "solY":"3.0",
+  "solZ":"0.0",
+
+  "rotX":"45",
+  "rotY":"0",
+  "rotZ":"0",
+
+  "solRotX":"10",
+  "solRotY":"0",
+  "solRotZ":"0",
+
+  "isRotatable": false,
+  "isMovable": true
+}

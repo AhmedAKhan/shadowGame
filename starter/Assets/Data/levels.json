@@ -1,0 +1,32 @@
+{
+  "level_names":[
+    "tutorial1",
+    "tutorial2",
+    "tutorial3",
+    "tutorial4"
+  ],
+  "levels":[{
+    "name": "tutorial1",
+    "number":1,
+    "parent":-1,
+    "children":[2]
+  },
+  {
+    "name": "tutorial2",
+    "number":2,
+    "parent":1,
+    "children":[3]
+  },
+  {
+    "name": "tutorial3",
+    "number":3,
+    "parent":2,
+    "children":[]
+  },
+  {
+    "name": "tutorial4",
+    "number":4,
+    "parent":3,
+    "children":[]
+  }]
+}
