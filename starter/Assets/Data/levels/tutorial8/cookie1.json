@@ -1,0 +1,23 @@
+{
+  "level":"tutorial8",
+  "name":"cookie1",
+  "prefab":"cookie",
+  "x":-4.8,
+  "y":0.6,
+  "z":-3,
+
+  "solX":"-4.67",
+  "solY":"1.32",
+  "solZ":"0.79",
+
+  "rotX":"90",
+  "rotY":"0",
+  "rotZ":"90",
+
+  "solRotX":"90",
+  "solRotY":"0",
+  "solRotZ":"90",
+
+  "isRotatable": false,
+  "isMovable": true
+}

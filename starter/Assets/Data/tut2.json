@@ -3,10 +3,10 @@
   "number":2,
   "parent":null,
 
-  "objectiveMaterialName":"metalBox",
+  "objectiveMaterialName":"lvl2ObjImage",
   "objPosX":"-0.5",
-  "objPosY":"3.0",
-  "objPosZ":"0",
+  "objPosY":"-0.6",
+  "objPosZ":"-2.54",
 
   "scene":"level_1B",
   "nextLevels":["tutorial3"]

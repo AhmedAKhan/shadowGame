@@ -21,6 +21,7 @@ public static class SaveLoad {
   }
   public static bool Load(){
     Debug.Log("load starting the function");
+    Debug.Log("persistentDataPath: " + Application.persistentDataPath);
     if(File.Exists(Application.persistentDataPath + "/savedGame.gd")) {
       Debug.Log("load inside if statement");
       BinaryFormatter bf = new BinaryFormatter();

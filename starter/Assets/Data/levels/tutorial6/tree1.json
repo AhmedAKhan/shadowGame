@@ -1,0 +1,24 @@
+{
+  "level":"tutorial5",
+  "name":"man1",
+  "prefab":"Cookie_tree",
+  "x":-4.25,
+  "y":0.6,
+  "z":-3,
+
+  "solX":"-4.25",
+  "solY":"0.6",
+  "solZ":"-3",
+
+  "rotX":"90",
+  "rotY":"0",
+  "rotZ":"90",
+
+  "solRotX":"-90",
+  "solRotY":"0",
+  "solRotZ":"90",
+
+  "isRotatable": true,
+  "isMovable": false
+
+}

@@ -1,0 +1,13 @@
+{
+  "name":"tutorial8",
+  "number":3,
+  "parent":null,
+
+  "objectiveMaterialName":"lvl8ObjImage",
+  "objPosX":"-0.5",
+  "objPosY":"1.44",
+  "objPosZ":"1.86",
+
+  "scene":"level_1B",
+  "nextLevels":[]
+}

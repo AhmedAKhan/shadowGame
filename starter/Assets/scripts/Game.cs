@@ -16,6 +16,17 @@ public class Game {
     completedLevels = new List<string>();
     completedLevels.Add("tutorial1");
   }
+  public void setupFull(){
+    completedLevels = new List<string>();
+    completedLevels.Add("tutorial1");
+    completedLevels.Add("tutorial2");
+    completedLevels.Add("tutorial3");
+    completedLevels.Add("tutorial4");
+    completedLevels.Add("tutorial5");
+    completedLevels.Add("tutorial6");
+    completedLevels.Add("tutorial7");
+    completedLevels.Add("tutorial8");
+  }
 
   public void levelCompleted(LevelData levelConfig){
     // update variables to indicate the the level "level" has been completed

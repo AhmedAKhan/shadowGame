@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour {
     if(!SaveLoad.Load()){
       Game.current = new Game();
       Game.current.setupEmpty();
+      //Game.current.setupFull();
     }
 
     levelMap = new Dictionary<string, LevelData>();
@@ -39,8 +40,9 @@ public class LevelManager : MonoBehaviour {
     foreach(string levelName in Game.current.completedLevels){
       print("looking for levelName: " + levelName);
       Transform child = transform.Find(levelName);
-      if(child == null) continue;
+      if(child == null){ print("could not find level"); continue; }
       Level lvl = child.GetComponent<Level>();
+      print("going to unlock level " + levelName + " lvl: " + lvl);
       lvl.unlockObject();
     }
   }
@@ -51,7 +53,7 @@ public class LevelManager : MonoBehaviour {
       print("level is locked");
       return;
     }
-    // get level 
+    // get level
     string key = obj.level;
     print("changeScene - going to look for key: " + key);
     LevelData lvl = levelMap[key];

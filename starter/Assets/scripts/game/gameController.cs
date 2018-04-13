@@ -8,6 +8,8 @@ using System.IO;
 public class gameController: MonoBehaviour {
   public float speed;
   public float rotationSpeed;
+  public GameObject pointer;
+
   private GameObject currentObject;
   private int selectedChildIndex = 0;
   private Obstacle curObstacle;
@@ -40,9 +42,11 @@ public class gameController: MonoBehaviour {
   }
   void setupObjective(){
     //levelConfig.objectiveName
-    Sprite sprite = Resources.Load<Sprite>(levelConfig.objectiveMaterialName);
+    print("going to load the sprite " + levelConfig.objectiveMaterialName);
+    Sprite sprite = Resources.Load<Sprite>("objectiveSprites/"+levelConfig.objectiveMaterialName);
+    //Sprite sprite = Resources.Load<Sprite>("objectiveSprites/metalBox");
+    print("sprite is: " + sprite);
     objectiveObject.GetComponent<SpriteRenderer>().sprite = sprite;
-
     /* objectiveObject.transform.position = new Vector3(-0.5f,3.5f,0); */
     objectiveObject.transform.position = new Vector3(
         levelConfig.objPosX,
@@ -69,9 +73,9 @@ public class gameController: MonoBehaviour {
   }
   void loadObject(ObstacleData o){
     GameObject prefab = Resources.Load ("prefabs/"+o.prefab) as GameObject;
-    print("adding the game object");
-    GameObject go = GameObject.Instantiate(prefab, 
-        new Vector3(o.x,o.y,o.z), 
+    print("adding the game object o.rotX: " + o.rotX);
+    GameObject go = GameObject.Instantiate(prefab,
+        new Vector3(o.x,o.y,o.z),
         Quaternion.Euler(o.rotX, o.rotY, o.rotZ));
     go.transform.parent = this.transform;
     go.name = o.name;
@@ -113,12 +117,12 @@ public class gameController: MonoBehaviour {
 
   private float epsilon = 0.5f;
   bool obstaclePositionCorrect(Vector3 pos, Vector3 posSol){
-    print ("pos: " + pos + " posSol: " + posSol);
-    print ("diff: " + Vector3.SqrMagnitude (pos - posSol));
+    //print ("pos: " + pos + " posSol: " + posSol);
+    //print ("diff pos: " + Vector3.SqrMagnitude (pos - posSol));
     return Vector3.SqrMagnitude(pos - posSol) < epsilon;
   }
   bool obstacleRotationCorrect(Quaternion rot, Quaternion rotSol){
-    //print ("diff is actually: " + Quaternion.Angle(rot, rotSol));
+    //print ("rotate diff is actually: " + Quaternion.Angle(rot, rotSol));
     //print ("rot: " + rot);
     //print ("rotSol: " + rotSol);
     return Quaternion.Angle(rot, rotSol) < epsilon;
@@ -159,6 +163,7 @@ public class gameController: MonoBehaviour {
   void handleMovement(){
     float hor = Input.GetAxis ("Horizontal");
     float ver = Input.GetAxis ("Vertical");
+    if(curObstacle == null) return;
     if(curObstacle.isRotatable) rotateObject(currentObject.GetComponent<Rigidbody>(), hor, ver);
     if(curObstacle.isMovable) moveObject(currentObject.GetComponent<Rigidbody>(), hor, ver);
   }
@@ -169,8 +174,9 @@ public class gameController: MonoBehaviour {
     Vector3 movement = new Vector3 (0.0f, ver, -hor);
     obj.MovePosition(obj.position + movement * speed);
     //Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
-    obj.AddForce (movement * speed);
-
+    //obj.AddForce (movement * speed);
+    Transform p = pointer.GetComponent<Transform>();
+    p.position = obj.position;
   }
   void rotateObject(Rigidbody obj, float hor, float ver){
     Vector3 movementRotation = new Vector3 (hor, ver, 0.0f) * 100;

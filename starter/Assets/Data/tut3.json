@@ -1,0 +1,13 @@
+{
+  "name":"tutorial3",
+  "number":3,
+  "parent":null,
+
+  "objectiveMaterialName":"lvl3ObjImage",
+  "objPosX":"-0.5",
+  "objPosY":"-0.6",
+  "objPosZ":"-0.25",
+
+  "scene":"level_1B",
+  "nextLevels":["tutorial4"]
+}

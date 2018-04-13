@@ -7,12 +7,14 @@ public class Level : MonoBehaviour {
   public int number;
   public bool isLocked;
   public Material unlockedTexture;
-  void Start(){
+  void Awake(){
+    print("setting locked = true, name: " +name);
     isLocked = true;
   }
   public void unlockObject(){
     print("unlocking object");
     GetComponent<Renderer>().material = unlockedTexture;
     isLocked = false;
+    print("set isLocked = false name: " + name);
   }
 }
